@@ -7,17 +7,20 @@ function getComputerChoice() {
 
 console.log(`The computer chose ${getComputerChoice()}.`);
 
+
 /*  to get the user's choice */
-function getHumanChoice() {
-    userChoice = window.prompt('Which one do you choose? Type "Rock", "Paper" or "Scissors".');
-    return userChoice
+function getHumanChoice() {1
+    return window.prompt('Which one do you choose? Type "Rock", "Paper" or "Scissors".');
 }
-console.log(`You chose ${getHumanChoice()}.`); /* 为什么一旦加了这句，窗口就弹出两次，但user choice还是以第一次的输入为准 */
-/* console.log(getHumanChoice()); */
 
 
+console.log(`You chose ${getHumanChoice()}.`);
+
+
+/* Declare the players score variables */
 let humanScore = 0
 let computerScore = 0
+
 
 /*  write the logic to play a single round*/
 function playRound(humanChoice,computerChoice){
@@ -40,5 +43,20 @@ console.log(`Human: ${humanScore}, Computer: ${computerScore}`);
 const humanSelection = getHumanChoice().toLowerCase;
 const computerSelection = getComputerChoice().toLocaleLowerCase;
 
-playRound(humanSelection, computerSelection);
 
+/*  write the logic to play the entire game for 5 rounds*/
+function playGame(number){
+
+    for (let i = 1; i <= number; i++){
+
+        getComputerChoice();
+        console.log(`The computer chose ${getComputerChoice()}.`);
+        getHumanChoice();
+        const userChoice = getHumanChoice();  
+        console.log(`You chose ${userChoice}.`);
+        playRound(humanSelection,computerSelection);
+    }
+} 
+
+
+playGame(5);
